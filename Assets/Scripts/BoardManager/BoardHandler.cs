@@ -5,16 +5,12 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BoardHandler : MonoBehaviour
+public class BoardHandler: MonoBehaviour 
 {
+    /*
     private static BoardHandler instance;
     public static BoardHandler Instance {  get { return instance; } }
 
-
-    private List<GameObject> selectedBoxes = new List<GameObject>();
-    private Dictionary<BoxHandler,List<GameObject>>NumberPairs = new Dictionary<BoxHandler,List<GameObject>>();
-    private GameObject numberbox;
-    private int score;
     private void Awake()
     {
         if (instance == null)
@@ -23,8 +19,28 @@ public class BoardHandler : MonoBehaviour
         }
         else
         {
-            Destroy(instance.gameObject);
+            Destroy(this);
         }
+    }
+    */
+
+    private List<GameObject> selectedBoxes = new List<GameObject>();
+    private Dictionary<BoxHandler,List<GameObject>>NumberPairs = new Dictionary<BoxHandler,List<GameObject>>();
+    private GameObject numberbox;
+    private int score;
+
+
+    private void Start()
+    {
+        Reset();
+    }
+
+    public void Reset()
+    {
+        selectedBoxes.Clear();
+        numberbox = null;
+        NumberPairs.Clear();
+        score = 0;
     }
 
     private void UpdateSSS()

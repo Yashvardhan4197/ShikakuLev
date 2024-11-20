@@ -35,7 +35,7 @@ public class BoxHandler : MonoBehaviour
             gameObject.GetComponent<Image>().color= boxColor;
         }
         //Call ValidityHandler
-        BoardHandler.Instance.OnBoxClicked(this);
+        GameService.Instance.BoardHandler.OnBoxClicked(this);
     }
 
     public int GetBoxNumber()=> boxNumber;
