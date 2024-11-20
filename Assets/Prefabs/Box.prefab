@@ -227,6 +227,8 @@ MonoBehaviour:
   boxNumber: 0
   boxColor: {r: 0.7106918, g: 0.7106918, b: 0.7106918, a: 1}
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  isCompleted: 0
+  parentBox: {fileID: 0}
   numberText: {fileID: 9177258177357432574}
 --- !u!114 &1966660703009471143
 MonoBehaviour:
