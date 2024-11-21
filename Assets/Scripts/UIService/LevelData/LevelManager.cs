@@ -15,13 +15,17 @@ public class LevelManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Level" + 1, 0);
         }
-
     }
 
-    private void SetLevelBoxesList(List<LevelObject> levelDataList)
+    private void Start()
     {
-        this.levelDataList = levelDataList;
+        for (int i = 0; i < levelDataList.Count; i++)
+        {
+            levelDataList[i].levelStatus = (LevelStatus)PlayerPrefs.GetInt("Level" + levelDataList[i].LevelNumber, 1);
+            Debug.Log("LevelStatus for " + levelDataList[i].LevelNumber + ": " + (LevelStatus)PlayerPrefs.GetInt("Level" + levelDataList[i].LevelNumber, 1));
+        }
     }
+
     public void SetController(LobbyController lobbyController)
     {
         this.lobbyController = lobbyController;
@@ -64,17 +68,8 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    
-    private void Start()
-    {
-        for(int i=0;i<levelDataList.Count;i++)
-        {
-            levelDataList[i].levelStatus = (LevelStatus)PlayerPrefs.GetInt("Level" + levelDataList[i].LevelNumber, 1);
-            Debug.Log("LevelStatus for " + levelDataList[i].LevelNumber + ": " + (LevelStatus)PlayerPrefs.GetInt("Level" + levelDataList[i].LevelNumber, 1));
-        }
-    }
-
 }
+
 [System.Serializable]
 public class LevelData
 {

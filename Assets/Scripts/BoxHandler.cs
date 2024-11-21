@@ -11,6 +11,7 @@ public class BoxHandler : MonoBehaviour
     public bool isCompleted = false;
     public GameObject parentBox = null;
     [SerializeField] TextMeshProUGUI numberText;
+
     private void Awake()
     {
         CheckUsability();
@@ -28,13 +29,13 @@ public class BoxHandler : MonoBehaviour
             numberText.text=boxNumber.ToString();
         }
     }
+
     public void PointerDown()
     {
         if(boxNumber>0)
         {
             gameObject.GetComponent<Image>().color= boxColor;
         }
-        //Call ValidityHandler
         BoardHandler.Instance.OnBoxClicked(this);
     }
 

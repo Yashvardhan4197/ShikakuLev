@@ -9,10 +9,6 @@ public class LobbyView : MonoBehaviour
     [SerializeField] Button StartButton;
     [SerializeField] Button EndButton;
     [SerializeField] GameObject LobbyPopUp;
-    public void SetController(LobbyController lobbyController)
-    {
-        this.lobbyController = lobbyController;
-    }
 
     private void Start()
     {
@@ -24,4 +20,10 @@ public class LobbyView : MonoBehaviour
     {
         LobbyPopUp.SetActive(true);
     }
+
+    public void SetController(LobbyController lobbyController)
+    {
+        this.lobbyController = lobbyController;
+    }
+
 }

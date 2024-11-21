@@ -24,29 +24,26 @@ public class GameService : MonoBehaviour
     }
     #endregion
 
-    //VIEWS
+    #region VIEWS
     [SerializeField] LobbyView lobbyView;
     [SerializeField] LevelManager levelManager;
+    #endregion
 
-    //DATA
+    #region DATA
     [SerializeField] List<InGameLevelControllerSO> InGameControllers;
     [SerializeField] List<LevelObject> levelDataList;
     private InGameLevelControllerSO currentInGameController;
-    //SERVICES
+    #endregion
+
+    #region SERVICES
     private UIService uIService;
     public UIService UIService { get { return uIService; } }
+    #endregion
 
-    //ACTIONS
-    public UnityAction StartLevel;
     private void Init()
     {
+        
         uIService=new UIService(lobbyView,levelManager);
-        //levelManager.SetLevelBoxesList(levelDataList);
-        StartLevel += OnSceneLoad;
-    }
-
-    public void OnSceneLoad()
-    {
     }
 
     public void SetInGameController(int levelNumber)
@@ -62,5 +59,4 @@ public class GameService : MonoBehaviour
     }
 
     public InGameLevelControllerSO GetInGameLevelController()=>currentInGameController;
-    public int GetTotalSceneCount()=>InGameControllers.Count;
 }

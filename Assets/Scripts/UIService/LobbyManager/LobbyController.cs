@@ -5,7 +5,6 @@ public class LobbyController
 {
     private LobbyView lobbyView;
     private LevelManager levelManager;
-    //private static int currentLevel;
     public LobbyController(LobbyView lobbyView, LevelManager levelManager)
     {
         this.lobbyView = lobbyView;
@@ -23,9 +22,5 @@ public class LobbyController
         levelManager.SetLevelStatus(currentlevel,levelStatus);
     }
 
-    public void OnSceneLoad()
-    {
-        //levelManager.OnSceneLoad();
-    }
 }
 
