@@ -28,24 +28,39 @@ public class GameService : MonoBehaviour
     [SerializeField] LobbyView lobbyView;
     [SerializeField] LevelManager levelManager;
 
-
+    //DATA
+    [SerializeField] List<InGameLevelControllerSO> InGameControllers;
+    [SerializeField] List<LevelObject> levelDataList;
+    private InGameLevelControllerSO currentInGameController;
     //SERVICES
     private UIService uIService;
-    private BoardHandler boardHandler;
     public UIService UIService { get { return uIService; } }
-    public BoardHandler BoardHandler { get {  return boardHandler; } }
 
     //ACTIONS
     public UnityAction StartLevel;
     private void Init()
     {
         uIService=new UIService(lobbyView,levelManager);
-        boardHandler = new BoardHandler();
+        //levelManager.SetLevelBoxesList(levelDataList);
         StartLevel += OnSceneLoad;
     }
 
     public void OnSceneLoad()
     {
-        boardHandler.Reset();
     }
+
+    public void SetInGameController(int levelNumber)
+    {
+        foreach(var controller in  InGameControllers)
+        {
+            if(controller.levelNumber == levelNumber)
+            {
+                currentInGameController = controller;
+                return;
+            }
+        }
+    }
+
+    public InGameLevelControllerSO GetInGameLevelController()=>currentInGameController;
+    public int GetTotalSceneCount()=>InGameControllers.Count;
 }

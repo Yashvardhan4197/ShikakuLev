@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class BoardHandler: MonoBehaviour 
 {
-    /*
+    
     private static BoardHandler instance;
     public static BoardHandler Instance {  get { return instance; } }
 
@@ -22,13 +22,11 @@ public class BoardHandler: MonoBehaviour
             Destroy(this);
         }
     }
-    */
 
     private List<GameObject> selectedBoxes = new List<GameObject>();
     private Dictionary<BoxHandler,List<GameObject>>NumberPairs = new Dictionary<BoxHandler,List<GameObject>>();
     private GameObject numberbox;
     private int score;
-
 
     private void Start()
     {
@@ -41,6 +39,7 @@ public class BoardHandler: MonoBehaviour
         numberbox = null;
         NumberPairs.Clear();
         score = 0;
+        UpdateSSS();
     }
 
     private void UpdateSSS()
@@ -48,12 +47,12 @@ public class BoardHandler: MonoBehaviour
         score = 0;
         foreach(var current in NumberPairs.Keys)
         {
-            if (current.GetBoxNumber() == NumberPairs[current].Count&&CheckValidRegion(numberbox))
+            if (current.GetBoxNumber() == NumberPairs[current].Count && CheckValidRegion(current.gameObject))
             {
                 score++;
             }
         }
-        Debug.Log("Score is: " + score);
+        GameService.Instance.GetInGameLevelController().UpdateScore(score);
     }
 
     private void UpdatePair()
@@ -61,7 +60,6 @@ public class BoardHandler: MonoBehaviour
         if(numberbox != null)
         {
             NumberPairs[numberbox.GetComponent<BoxHandler>()] = selectedBoxes;
-            Debug.Log("Updated Pair Value" + NumberPairs[numberbox.GetComponent<BoxHandler>()].Count);
         }
     }
 
@@ -74,17 +72,19 @@ public class BoardHandler: MonoBehaviour
         }
 
         List<GameObject> temp = NumberPairs[currentBox];
+        NumberPairs.Remove(currentBox);
         foreach (GameObject obj in temp)
         {
             obj.GetComponent<Image>().color = obj.GetComponent<BoxHandler>().defaultColor;
             obj.GetComponent<BoxHandler>().parentBox = null;
         }
-        NumberPairs.Remove(currentBox);
-        selectedBoxes.Clear();
+
+        //selectedBoxes.Clear();
     }
 
     public void OnBoxClicked(BoxHandler newBox)
     {
+        
         var boxHandler = newBox.GetComponent<BoxHandler>();
         if (numberbox==null && boxHandler.GetBoxNumber()>0)
         {
@@ -174,7 +174,6 @@ public class BoardHandler: MonoBehaviour
     {
         if (NumberPairs.ContainsKey(newBox))
         {
-            
             ClearPair(newBox);
         }
         else
@@ -190,8 +189,16 @@ public class BoardHandler: MonoBehaviour
     private bool CheckValidRegion(GameObject mainBox)
     {
 
-        if(selectedBoxes.Count != mainBox?.GetComponent<BoxHandler>().GetBoxNumber()) { return false; }
-
+        //if(selectedBoxes.Count != mainBox?.GetComponent<BoxHandler>().GetBoxNumber()) { return false; }
+        if (numberbox == mainBox)
+        {
+            if (selectedBoxes.Count != mainBox?.GetComponent<BoxHandler>().GetBoxNumber()) { return false; }
+        }
+        else
+        {
+            if (NumberPairs[mainBox.GetComponent<BoxHandler>()].Count != mainBox.GetComponent<BoxHandler>().GetBoxNumber()) { return false; }
+        }
+        
         if(IsRectangle(mainBox))
         {
             return true;

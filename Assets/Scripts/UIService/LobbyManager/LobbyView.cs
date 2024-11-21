@@ -17,6 +17,7 @@ public class LobbyView : MonoBehaviour
     private void Start()
     {
         StartButton.onClick.AddListener(OpenLevelSelection);
+        LobbyPopUp.SetActive(false);
     }
 
     private void OpenLevelSelection()

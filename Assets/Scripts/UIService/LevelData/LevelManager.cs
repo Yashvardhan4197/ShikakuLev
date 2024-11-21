@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -7,6 +8,20 @@ public class LevelManager : MonoBehaviour
     private LobbyController lobbyController;
     [SerializeField] LevelData[] levelColorData;
     [SerializeField] List<LevelObject> levelDataList;
+
+    private void Awake()
+    {
+        if(PlayerPrefs.GetInt("Level"+1,-1)==-1)
+        {
+            PlayerPrefs.SetInt("Level" + 1, 0);
+        }
+
+    }
+
+    private void SetLevelBoxesList(List<LevelObject> levelDataList)
+    {
+        this.levelDataList = levelDataList;
+    }
     public void SetController(LobbyController lobbyController)
     {
         this.lobbyController = lobbyController;
@@ -26,16 +41,38 @@ public class LevelManager : MonoBehaviour
 
     public void SetLevelStatus(int currentLevelNumber, LevelStatus levelStatus)
     {
-        foreach(LevelObject lvlObject in levelDataList)
+        for(int i = 0;i < levelDataList.Count;i++)
         {
-            if(lvlObject.LevelNumber==currentLevelNumber)
+            if (levelDataList[i].LevelNumber ==currentLevelNumber)
             {
-                lvlObject.levelStatus = levelStatus;
+                levelDataList[i].levelStatus = levelStatus;
+                PlayerPrefs.SetInt("Level" + levelDataList[i].LevelNumber,(int)levelStatus);
+                if (levelStatus==LevelStatus.COMPLETED)
+                {
+                    if(i<levelDataList.Count-1)
+                    {
+                        if (levelDataList[i + 1].levelStatus == LevelStatus.LOCKED)
+                        {
+                            
+                            levelDataList[i + 1].levelStatus = LevelStatus.UNLOCKED;
+                            PlayerPrefs.SetInt("Level" + levelDataList[i+1].LevelNumber, 0);
+                        }
+                    }
+                }
                 return;
             }
         }
     }
 
+    
+    private void Start()
+    {
+        for(int i=0;i<levelDataList.Count;i++)
+        {
+            levelDataList[i].levelStatus = (LevelStatus)PlayerPrefs.GetInt("Level" + levelDataList[i].LevelNumber, 1);
+            Debug.Log("LevelStatus for " + levelDataList[i].LevelNumber + ": " + (LevelStatus)PlayerPrefs.GetInt("Level" + levelDataList[i].LevelNumber, 1));
+        }
+    }
 
 }
 [System.Serializable]

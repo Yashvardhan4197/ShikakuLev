@@ -25,6 +25,7 @@ public class LevelObject : MonoBehaviour
     private void OpenLevel()
     {
         SceneManager.LoadScene(LevelNumber);
+        GameService.Instance.SetInGameController(LevelNumber);
         GameService.Instance.StartLevel?.Invoke();
     }
 }
