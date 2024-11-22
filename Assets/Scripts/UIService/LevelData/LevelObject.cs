@@ -26,5 +26,6 @@ public class LevelObject : MonoBehaviour
     {
         SceneManager.LoadScene(LevelNumber);
         GameService.Instance.SetInGameController(LevelNumber);
+        GameService.Instance.SoundManager.PlaySound(SoundNames.BUTTON_CLICK);
     }
 }

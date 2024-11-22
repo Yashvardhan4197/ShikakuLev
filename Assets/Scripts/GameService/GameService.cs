@@ -32,18 +32,26 @@ public class GameService : MonoBehaviour
     #region DATA
     [SerializeField] List<InGameLevelControllerSO> InGameControllers;
     [SerializeField] List<LevelObject> levelDataList;
+
+    [SerializeField] AudioSource bGAudioSource;
+    [SerializeField] AudioSource sfxAudioSource;
+    [SerializeField] SoundTypes[] soundTypes;
     private InGameLevelControllerSO currentInGameController;
     #endregion
 
     #region SERVICES
     private UIService uIService;
+    private SoundManager soundManager;
     public UIService UIService { get { return uIService; } }
+    public SoundManager SoundManager { get { return soundManager; } }
     #endregion
 
     private void Init()
     {
         
         uIService=new UIService(lobbyView,levelManager);
+        soundManager = new SoundManager(bGAudioSource, sfxAudioSource, soundTypes);
+        SoundManager.SetupBgSound(SoundNames.BACKGROUND);
     }
 
     public void SetInGameController(int levelNumber)
