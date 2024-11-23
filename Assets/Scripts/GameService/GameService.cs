@@ -14,7 +14,8 @@ public class GameService : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); Init();
+            DontDestroyOnLoad(gameObject); 
+            Init();
         }
         else
         {
