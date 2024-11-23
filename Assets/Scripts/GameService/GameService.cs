@@ -14,13 +14,13 @@ public class GameService : MonoBehaviour
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(gameObject); Init();
         }
         else
         {
             Destroy(this);
         }
-        Init();
+        
     }
     #endregion
 
@@ -51,6 +51,7 @@ public class GameService : MonoBehaviour
         
         uIService=new UIService(lobbyView,levelManager);
         soundManager = new SoundManager(bGAudioSource, sfxAudioSource, soundTypes);
+        Debug.Log("I got called");
         SoundManager.SetupBgSound(SoundNames.BACKGROUND);
     }
 
