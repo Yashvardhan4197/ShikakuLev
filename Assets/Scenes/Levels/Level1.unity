@@ -2385,22 +2385,6 @@ PrefabInstance:
       propertyPath: m_Padding.m_Left
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 942055686668858094, guid: 6956379a3c47b9549b724c871c6dbed9, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 887.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 942055686668858094, guid: 6956379a3c47b9549b724c871c6dbed9, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 364.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 942055686668858094, guid: 6956379a3c47b9549b724c871c6dbed9, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.0014553
-      objectReference: {fileID: 0}
-    - target: {fileID: 942055686668858094, guid: 6956379a3c47b9549b724c871c6dbed9, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -182.25
-      objectReference: {fileID: 0}
     - target: {fileID: 2198726937573974223, guid: 6956379a3c47b9549b724c871c6dbed9, type: 3}
       propertyPath: m_Spacing
       value: 61

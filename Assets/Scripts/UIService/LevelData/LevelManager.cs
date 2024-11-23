@@ -19,10 +19,14 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        SetStatusOnLoad();
+    }
+
+    private void SetStatusOnLoad()
+    {
         for (int i = 0; i < levelDataList.Count; i++)
         {
             levelDataList[i].levelStatus = (LevelStatus)PlayerPrefs.GetInt("Level" + levelDataList[i].LevelNumber, 1);
-            Debug.Log("LevelStatus for " + levelDataList[i].LevelNumber + ": " + (LevelStatus)PlayerPrefs.GetInt("Level" + levelDataList[i].LevelNumber, 1));
         }
     }
 
@@ -68,11 +72,4 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-}
-
-[System.Serializable]
-public class LevelData
-{
-    public LevelStatus LevelStatus;
-    public Color Color;
 }

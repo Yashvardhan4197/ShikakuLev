@@ -41,6 +41,7 @@ public class InGameView : MonoBehaviour
     private void ExitToLobby()
     {
         SceneManager.LoadScene(0);
+        GameService.Instance.SoundManager.PlaySound(SoundNames.DESELECT);
     }
 
     public void SetScoreText(int score)

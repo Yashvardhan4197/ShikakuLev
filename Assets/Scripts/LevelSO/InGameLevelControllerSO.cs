@@ -29,7 +29,6 @@ public class InGameLevelControllerSO : ScriptableObject
     public void GoToNextlevel()
     {
         GameService.Instance.SetInGameController(levelNumber + 1);
-        Debug.Log("Wassupppppp nigga" + SceneManager.sceneCountInBuildSettings);
         if (SceneManager.sceneCountInBuildSettings <= levelNumber+1)
         {
             SceneManager.LoadScene(0);

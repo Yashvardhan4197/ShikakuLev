@@ -260,9 +260,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 39
+    m_Left: 56
     m_Right: 0
-    m_Top: 125
+    m_Top: 95
     m_Bottom: 0
   m_ChildAlignment: 0
   m_Spacing: 61
@@ -340,7 +340,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: ef63cdd00929415408bdca9d89088331, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -551,7 +551,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: bbeb20d4e147e2948840b8de18f09d16, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -650,8 +650,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.0014553, y: -182.25}
-  m_SizeDelta: {x: 887.2, y: 364.5}
+  m_AnchoredPosition: {x: 3.0043, y: -218}
+  m_SizeDelta: {x: 938.31, y: 295.1732}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3694875823666559111
 CanvasRenderer:
@@ -1613,7 +1613,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: bbeb20d4e147e2948840b8de18f09d16, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2173,7 +2173,7 @@ RectTransform:
   m_GameObject: {fileID: 8771374194825734026}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 942055686668858094}

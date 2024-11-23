@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -46,20 +44,4 @@ public class SoundManager : MonoBehaviour
         }
         return sound.AudioClip;
     }
-}
-
-[System.Serializable]
-public class SoundTypes
-{
-    public SoundNames soundName;
-    public AudioClip AudioClip;
-}
-
-public enum SoundNames
-{
-    BUTTON_CLICK,
-    DENY,
-    DESELECT,
-    GAME_OVER,
-    BACKGROUND
 }

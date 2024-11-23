@@ -24,6 +24,7 @@ public class BoardHandler: MonoBehaviour
     }
 
     #endregion
+
     private List<GameObject> selectedBoxes = new List<GameObject>();
     private Dictionary<BoxHandler,List<GameObject>>NumberPairs = new Dictionary<BoxHandler,List<GameObject>>();
     private GameObject numberbox;
@@ -227,9 +228,6 @@ public class BoardHandler: MonoBehaviour
                 numberbox = null;
             }
         }
-
-        Debug.Log(selectedBoxes.Count);
-
 
         UpdateSSS();
 
