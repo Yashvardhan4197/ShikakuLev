@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class BoxHandler : MonoBehaviour
 {
     [SerializeField] int boxNumber;
-    [SerializeField] Color boxColor;
+    public Color boxColor;
     public Color defaultColor;
     public bool isCompleted = false;
     public GameObject parentBox = null;
     [SerializeField] TextMeshProUGUI numberText;
-
+    private bool flag = false;
     private void Awake()
     {
         CheckUsability();
@@ -32,9 +32,10 @@ public class BoxHandler : MonoBehaviour
 
     public void PointerDown()
     {
+        
         if(boxNumber>0)
         {
-            gameObject.GetComponent<Image>().color= boxColor;
+            gameObject.GetComponent<Image>().color = boxColor;
         }
         BoardHandler.Instance.OnBoxClicked(this);
         GameService.Instance.SoundManager.PlaySound(SoundNames.BUTTON_CLICK);

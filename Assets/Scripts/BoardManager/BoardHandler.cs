@@ -82,7 +82,7 @@ public class BoardHandler: MonoBehaviour
             }
             selectedBoxes.Add(newBox.gameObject);
             newBox.parentBox = numberbox;
-            newBox.gameObject.GetComponent<Image>().color = numberbox.GetComponent<Image>().color;
+            newBox.gameObject.GetComponent<Image>().color = numberbox.GetComponent<BoxHandler>().boxColor;
         }
         else
         {
@@ -102,6 +102,7 @@ public class BoardHandler: MonoBehaviour
     {
         if (NumberPairs.ContainsKey(newBox))
         {
+            
             ClearPair(newBox);
         }
         else
@@ -187,13 +188,20 @@ public class BoardHandler: MonoBehaviour
         var boxHandler = newBox.GetComponent<BoxHandler>();
         if (numberbox == null && boxHandler.GetBoxNumber() > 0)
         {
+            Debug.Log("Hello again");
             HandleFirstSelection(newBox);
             UpdatePair();
 
         }
         else if (numberbox != null)
         {
-            if (newBox.GetComponent<BoxHandler>().GetBoxNumber() > 0)
+            if (newBox.gameObject == numberbox)
+            {
+                ClearPair(newBox);
+                UpdatePair();
+                numberbox = null;
+            }
+            else if (newBox.GetComponent<BoxHandler>().GetBoxNumber() > 0&&newBox.gameObject!=numberbox)
             {
                 ClearPair(numberbox.GetComponent<BoxHandler>());
                 if (NumberPairs.ContainsKey(newBox))
@@ -220,12 +228,6 @@ public class BoardHandler: MonoBehaviour
             {
                 DeselectBox(newBox);
                 UpdatePair();
-            }
-            else if (newBox.gameObject == numberbox)
-            {
-                ClearPair(newBox);
-                UpdatePair();
-                numberbox = null;
             }
         }
 
