@@ -38,7 +38,7 @@ public class BoardHandler: MonoBehaviour
     private void UpdateSSS()
     {
         score = 0;
-        foreach(var current in NumberPairs.Keys)
+        foreach(var current in new List<BoxHandler>(NumberPairs.Keys))
         {
             if (current.GetBoxNumber() == NumberPairs[current].Count && CheckValidRegion(current.gameObject))
             {
@@ -107,12 +107,14 @@ public class BoardHandler: MonoBehaviour
         }
         else
         {
-            NumberPairs.Add(newBox, new List<GameObject>());
-            selectedBoxes = NumberPairs[newBox];
-            selectedBoxes.Add(newBox.gameObject);
-            numberbox = newBox.gameObject;
-            newBox.GetComponent<BoxHandler>().parentBox = numberbox;
-        } 
+            //changed
+        }
+        NumberPairs.Add(newBox, new List<GameObject>());
+        selectedBoxes = NumberPairs[newBox];
+        selectedBoxes.Add(newBox.gameObject);
+        numberbox = newBox.gameObject;
+        newBox.GetComponent<BoxHandler>().parentBox = numberbox;
+        newBox.GetComponent<Image>().color=numberbox.GetComponent<BoxHandler>().boxColor;
     }
 
     private bool CheckValidRegion(GameObject mainBox)
@@ -130,6 +132,12 @@ public class BoardHandler: MonoBehaviour
         {
             return true;
         }
+        //selectedBoxes.Clear();
+        ClearPair(mainBox.GetComponent<BoxHandler>());
+        UpdatePair();
+        numberbox = null;
+        selectedBoxes.Clear();
+        GameService.Instance.SoundManager.PlaySound(SoundNames.DENY);
         return false;
     }
 
@@ -203,6 +211,7 @@ public class BoardHandler: MonoBehaviour
             }
             else if (newBox.GetComponent<BoxHandler>().GetBoxNumber() > 0&&newBox.gameObject!=numberbox)
             {
+                
                 ClearPair(numberbox.GetComponent<BoxHandler>());
                 if (NumberPairs.ContainsKey(newBox))
                 {
@@ -220,14 +229,16 @@ public class BoardHandler: MonoBehaviour
                 }
 
             }
-            else if (selectedBoxes.Count < numberbox.GetComponent<BoxHandler>().GetBoxNumber())
-            {
-                ToggleBoxSelection(newBox);
-            }
+            
             else if (numberbox == boxHandler?.parentBox)
             {
                 DeselectBox(newBox);
                 UpdatePair();
+            }
+            else //if (selectedBoxes.Count < numberbox.GetComponent<BoxHandler>().GetBoxNumber())
+            {
+                Debug.Log("Hello Pussyyy");
+                ToggleBoxSelection(newBox);
             }
         }
 
