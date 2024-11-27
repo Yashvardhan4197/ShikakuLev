@@ -1,4 +1,5 @@
 
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,11 +9,17 @@ public class InGameLevelControllerSO : ScriptableObject
     [SerializeField] int WinningCondition;
     private InGameView inGameView;
     private int currentScore;
+    private float timer = 0;
     public int levelNumber;
-    
+    private bool timerStatus;
     private void Init()
     {
         inGameView.SetScoreText(currentScore);
+    }
+
+    private void Start()
+    {
+
     }
 
     public void UpdateScore(int newScore)
@@ -45,5 +52,24 @@ public class InGameLevelControllerSO : ScriptableObject
         Init();
     }
 
+    public void StartTimer()
+    {
+        if(timerStatus==true)
+        {
+            timer += Time.deltaTime;
+            inGameView.SetTimer(timer);
+        }
+        
+    }
+
+    public void SetTimerStatus(bool status)
+    {
+        timerStatus = status;
+    }
+    public void SetTimerStatus(bool status,int time)
+    {
+        timerStatus=status;
+        timer = time;
+    }
 
 }

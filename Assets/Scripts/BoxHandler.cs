@@ -35,10 +35,12 @@ public class BoxHandler : MonoBehaviour
         
         if(boxNumber>0)
         {
+            GameService.Instance.GetInGameLevelController().SetTimerStatus(true);
             gameObject.GetComponent<Image>().color = boxColor;
         }
         BoardHandler.Instance.OnBoxClicked(this);
         GameService.Instance.SoundManager.PlaySound(SoundNames.BUTTON_CLICK);
+        
     }
 
     public int GetBoxNumber()=> boxNumber;
