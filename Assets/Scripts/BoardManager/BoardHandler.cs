@@ -196,7 +196,6 @@ public class BoardHandler: MonoBehaviour
         var boxHandler = newBox.GetComponent<BoxHandler>();
         if (numberbox == null && boxHandler.GetBoxNumber() > 0)
         {
-            Debug.Log("Hello again");
             HandleFirstSelection(newBox);
             UpdatePair();
 
@@ -235,9 +234,8 @@ public class BoardHandler: MonoBehaviour
                 DeselectBox(newBox);
                 UpdatePair();
             }
-            else //if (selectedBoxes.Count < numberbox.GetComponent<BoxHandler>().GetBoxNumber())
+            else
             {
-                Debug.Log("Hello Pussyyy");
                 ToggleBoxSelection(newBox);
             }
         }

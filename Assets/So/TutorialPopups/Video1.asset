@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5c7bf65ef95114eb45c8d035c23050, type: 3}
+  m_Name: Video1
+  m_EditorClassIdentifier: 
+  VideoClipURL: https://github.com/user-attachments/assets/c06bb44b-0dd4-4ef9-8058-63c153f955f4
+  RenderTexture: {fileID: 8400000, guid: efd4f0a546e941049aef813642705332, type: 2}

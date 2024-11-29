@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager
 {
     private AudioSource bgAudio;
     private AudioSource sFXAudio;

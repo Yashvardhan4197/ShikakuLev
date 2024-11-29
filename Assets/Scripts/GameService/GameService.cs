@@ -1,25 +1,25 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameService : MonoBehaviour
 {
     #region SINGLETON SETUP
     private static GameService instance;
-    public static GameService Instance {  get { return instance; } }
+    public static GameService Instance { get { return instance; } }
     private void Awake()
     {
-        
         if(instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); 
+            DontDestroyOnLoad(gameObject);
             Init();
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
         
     }
@@ -32,11 +32,10 @@ public class GameService : MonoBehaviour
 
     #region DATA
     [SerializeField] List<InGameLevelControllerSO> InGameControllers;
-    [SerializeField] List<LevelObject> levelDataList;
-
     [SerializeField] AudioSource bGAudioSource;
     [SerializeField] AudioSource sfxAudioSource;
     [SerializeField] SoundTypes[] soundTypes;
+    [SerializeField] TutorialPopUpSO[] tutorialPopUps;
     private InGameLevelControllerSO currentInGameController;
     #endregion
 
@@ -49,10 +48,9 @@ public class GameService : MonoBehaviour
 
     private void Init()
     {
-        
-        uIService=new UIService(lobbyView,levelManager);
+
+        uIService = new UIService(lobbyView, levelManager, tutorialPopUps);
         soundManager = new SoundManager(bGAudioSource, sfxAudioSource, soundTypes);
-        Debug.Log("I got called");
         SoundManager.SetupBgSound(SoundNames.BACKGROUND);
     }
 
