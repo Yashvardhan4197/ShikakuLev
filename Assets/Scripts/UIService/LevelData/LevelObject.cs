@@ -7,11 +7,11 @@ public class LevelObject : MonoBehaviour
 {
     public LevelStatus levelStatus;
     public int LevelNumber;
+
     private void Start()
     {
         Invoke("SetColor", 0.2f);
     }
-
 
     private void SetColor()
     {

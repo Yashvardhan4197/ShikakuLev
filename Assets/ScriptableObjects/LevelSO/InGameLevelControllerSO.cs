@@ -1,5 +1,4 @@
 
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,14 +11,10 @@ public class InGameLevelControllerSO : ScriptableObject
     private float timer = 0;
     public int levelNumber;
     private bool timerStatus;
+
     private void Init()
     {
         inGameView.SetScoreText(currentScore);
-    }
-
-    private void Start()
-    {
-
     }
 
     public void UpdateScore(int newScore)
@@ -66,6 +61,7 @@ public class InGameLevelControllerSO : ScriptableObject
     {
         timerStatus = status;
     }
+
     public void SetTimerStatus(bool status,int time)
     {
         timerStatus=status;

@@ -1,4 +1,4 @@
-using System.Collections;
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,7 +22,6 @@ public class LevelManager : MonoBehaviour
         Invoke("SetStatusOnLoad", 0.1f);
         lobbyController = GameService.Instance.UIService.GetLobbyController();
     }
-
 
     private void SetStatusOnLoad()
     {

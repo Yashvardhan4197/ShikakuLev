@@ -11,7 +11,7 @@ public class BoxHandler : MonoBehaviour
     public bool isCompleted = false;
     public GameObject parentBox = null;
     [SerializeField] TextMeshProUGUI numberText;
-    private bool flag = false;
+
     private void Awake()
     {
         CheckUsability();

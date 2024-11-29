@@ -13,7 +13,6 @@ public class InGameView : MonoBehaviour
     [SerializeField] GameObject WinScreenPopUp;
     [SerializeField] GameObject PauseMenuPopUp;
     [SerializeField] InGameLevelControllerSO InGameController;
-
     [SerializeField] Button PauseButton;
     [SerializeField] Button ResumeButton;
     [SerializeField] Button NextButton;
@@ -23,6 +22,7 @@ public class InGameView : MonoBehaviour
     private bool paused = false;
     private float currentTime;
     private float highTime;
+
     private void Start()
     {
         WinScreenPopUp.SetActive(false);
@@ -76,7 +76,6 @@ public class InGameView : MonoBehaviour
         {
             PauseMenuPopUp?.SetActive(true);
             GameService.Instance.SoundManager.PlaySound(SoundNames.BUTTON_CLICK);
-            //InGameController.SetTimerStatus(false);
             paused = true;
         }
         else
@@ -84,7 +83,6 @@ public class InGameView : MonoBehaviour
             paused = false;
             PauseMenuPopUp.SetActive(false);
             GameService.Instance.SoundManager.PlaySound(SoundNames.DESELECT);
-            //InGameController.SetTimerStatus(true);
         }
     }
 
@@ -109,7 +107,6 @@ public class InGameView : MonoBehaviour
             FBPP.SetFloat("Timer"+InGameController.levelNumber,highTime);
         }
         TimeSpan temp=TimeSpan.FromSeconds(highTime);
-        //HighScoreTime.text=temp.Minutes.ToString()+":"+temp.Seconds.ToString();
         HighScoreTime.text = String.Format("{0:00}:{1:00}",temp.Minutes,temp.Seconds);
         FBPP.Save();
     }

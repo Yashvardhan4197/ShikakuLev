@@ -12,14 +12,12 @@ public class LobbyView : MonoBehaviour
     [SerializeField] Button EndButton;
     [SerializeField] Button HowToPlayButton;
     [SerializeField] Button GoBackButton;
-
     [SerializeField] Button GoBackHowToPlayButton;
     [SerializeField] Button GoNextHowToPlayButton;
     [SerializeField] Button GoPrevHowToPlayButton;
     [SerializeField] TextMeshProUGUI HowToPlayPageNumber;
     [SerializeField] GameObject LobbyPopUp;
     [SerializeField] GameObject HowToPlayPopUp;
-
     [SerializeField] VideoPlayer videoPlayer;
     [SerializeField] GameObject[] tutorialPopUps;
 

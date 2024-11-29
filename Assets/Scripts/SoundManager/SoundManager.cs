@@ -5,8 +5,17 @@ public class SoundManager
 {
     private AudioSource bgAudio;
     private AudioSource sFXAudio;
-
     private SoundTypes[] SoundType;
+
+    private AudioClip GetAudioClip(SoundNames soundName)
+    {
+        SoundTypes sound = Array.Find(SoundType, s => s.soundName == soundName);
+        if (sound == null)
+        {
+            return null;
+        }
+        return sound.AudioClip;
+    }
 
     public SoundManager(AudioSource bgAudio, AudioSource sFXAudio, SoundTypes[] soundType)
     {
@@ -14,7 +23,6 @@ public class SoundManager
         this.sFXAudio = sFXAudio;
         SoundType = soundType;
     }
-
 
     public void PlaySound(SoundNames soundName)
     {
@@ -35,13 +43,4 @@ public class SoundManager
         }
     }
 
-    private AudioClip GetAudioClip(SoundNames soundName)
-    {
-        SoundTypes sound = Array.Find(SoundType, s => s.soundName == soundName);
-        if(sound == null)
-        {
-            return null;
-        }
-        return sound.AudioClip;
-    }
 }
