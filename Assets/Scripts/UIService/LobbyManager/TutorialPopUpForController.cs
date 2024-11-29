@@ -6,7 +6,7 @@ using UnityEngine;
 public class TutorialPopUpForController
 {
     public GameObject tutorialPopUpGameObject;
-    public string videoClipURL;
+    public string videoClipName;
     public RenderTexture renderTexture;
 }
 

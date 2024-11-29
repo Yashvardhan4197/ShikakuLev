@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f5c7bf65ef95114eb45c8d035c23050, type: 3}
   m_Name: Video3
   m_EditorClassIdentifier: 
-  VideoClipURL: https://drive.google.com/uc?id=1zcEhimolIe41kY8TlFr5xLThdLasQvMs&export=download
+  VideoClipName: GameWin.mp4
   RenderTexture: {fileID: 8400000, guid: 05f96f8fbfbc92841bec54e06175a361, type: 2}

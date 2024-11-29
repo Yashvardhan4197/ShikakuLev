@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="TutorialPopUpData",menuName ="ScriptableObjects/newTutorialPopUpData")]
 public class TutorialPopUpSO : ScriptableObject
 {
-    public string VideoClipURL;
+    public string VideoClipName;
     public RenderTexture RenderTexture;
 }

@@ -53,7 +53,8 @@ public class LobbyController
             {
                 lobbyView.GetVideoPlayer().Prepare();
                 tutorialPopUpData[i].tutorialPopUpGameObject.SetActive(true);
-                lobbyView.GetVideoPlayer().url = tutorialPopUpData[i].videoClipURL;
+                string videoPath=System.IO.Path.Combine(Application.streamingAssetsPath, tutorialPopUpData[i].videoClipName);
+                lobbyView.GetVideoPlayer().url = videoPath;
                 SetHowToPlayPageNumber(currentPageNumber);
                 lobbyView.GetVideoPlayer().targetTexture = tutorialPopUpData[i].renderTexture;
                 lobbyView.GetVideoPlayer().Play();
@@ -86,7 +87,7 @@ public class LobbyController
         for(int i = 0;i<tutorialPopUpData.Length;i++)
         {
             tutorialPopUpData[i].tutorialPopUpGameObject = tutorialPopUps[i];
-            tutorialPopUpData[i].videoClipURL = tutorialPopUpSOs[i].VideoClipURL;
+            tutorialPopUpData[i].videoClipName = tutorialPopUpSOs[i].VideoClipName;
             tutorialPopUpData[i].renderTexture = tutorialPopUpSOs[i].RenderTexture;
         }
     }
