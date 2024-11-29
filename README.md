@@ -6,6 +6,7 @@ This is a Shikaku puzzle game built using Unity with clean, scalable architectur
 - Puzzle Grid: A grid-based puzzle with numbers to guide rectangle formation.
 - Simple Controls: Drag to select areas for rectangle creation.
 - Scoring System: Earn points for each correctly formed rectangle.
+- Timer: A timer to check how fast the level is completed, also saves highest score.
 ---
 ## PLAY ON
   https://yashvardhan1.itch.io/shikakulev
@@ -23,3 +24,8 @@ This is a Shikaku puzzle game built using Unity with clean, scalable architectur
 <img src="https://github.com/user-attachments/assets/fd6baeba-c650-433a-9022-132ad813afff" alt="Screenshot 2024-10-19 201126" width="400" height="600">
 <br><br>
 <img src="https://github.com/user-attachments/assets/911f7a68-5cfe-4caa-ad9a-b8e54661d838" alt="Screenshot 2024-10-19 201135" width="400" height="600">
+
+---
+## GAMEPLAY VIDEO
+  https://github.com/user-attachments/assets/49f4ce02-0997-4f2f-a879-cf7513ddacb6
+
