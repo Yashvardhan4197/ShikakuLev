@@ -16,6 +16,7 @@ public class GameService : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
             Init();
+
         }
         else
         {
@@ -52,6 +53,17 @@ public class GameService : MonoBehaviour
         uIService = new UIService(lobbyView, levelManager, tutorialPopUps);
         soundManager = new SoundManager(bGAudioSource, sfxAudioSource, soundTypes);
         SoundManager.SetupBgSound(SoundNames.BACKGROUND);
+
+        var config = new FBPPConfig()
+        {
+            SaveFileName = "my-save-file.txt",
+            AutoSaveData = false,
+            ScrambleSaveData = true,
+            EncryptionSecret = "my-secret",
+            SaveFilePath = Application.persistentDataPath
+        };
+        // pass it to FBPP
+        FBPP.Start(config);
     }
 
     public void SetInGameController(int levelNumber)

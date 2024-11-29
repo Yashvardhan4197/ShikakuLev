@@ -35,7 +35,7 @@ public class InGameView : MonoBehaviour
         PauseExitButton.onClick.AddListener(ExitToLobby);
         NextButton.onClick.AddListener(OnNextButtonClicked);
         ResumeButton.onClick.AddListener(OnResumeButtonClicked);
-        highTime = PlayerPrefs.GetFloat("Timer" + InGameController.levelNumber, float.MaxValue);
+        highTime = FBPP.GetFloat("Timer" + InGameController.levelNumber, float.MaxValue);
         currentTime = 0;
         InGameController.SetTimerStatus(false,0);
     }
@@ -106,10 +106,11 @@ public class InGameView : MonoBehaviour
         if (highTime>currentTime)
         {
             highTime = currentTime;
-            PlayerPrefs.SetFloat("Timer"+InGameController.levelNumber,highTime);
+            FBPP.SetFloat("Timer"+InGameController.levelNumber,highTime);
         }
         TimeSpan temp=TimeSpan.FromSeconds(highTime);
         //HighScoreTime.text=temp.Minutes.ToString()+":"+temp.Seconds.ToString();
         HighScoreTime.text = String.Format("{0:00}:{1:00}",temp.Minutes,temp.Seconds);
+        FBPP.Save();
     }
 }

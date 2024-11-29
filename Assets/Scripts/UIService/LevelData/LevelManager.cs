@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -11,24 +10,26 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        if(PlayerPrefs.GetInt("Level"+1,-1)==-1)
+        if (FBPP.GetInt("Level" + 1, -1) == -1)
         {
-            PlayerPrefs.SetInt("Level" + 1, 0);
+            FBPP.SetInt("Level" + 1, 0);
+            FBPP.Save();
         }
     }
 
     private void Start()
     {
-        SetStatusOnLoad();
-        lobbyController=GameService.Instance.UIService.GetLobbyController();
+        Invoke("SetStatusOnLoad", 0.1f);
+        lobbyController = GameService.Instance.UIService.GetLobbyController();
     }
+
 
     private void SetStatusOnLoad()
     {
         for (int i = 0; i < levelDataList.Count; i++)
         {
-            levelDataList[i].levelStatus = (LevelStatus)PlayerPrefs.GetInt("Level" + levelDataList[i].LevelNumber, 1);
-            Debug.Log("level:"+levelDataList[i].LevelNumber +"="+levelDataList[i].levelStatus);
+            levelDataList[i].levelStatus = (LevelStatus)FBPP.GetInt("Level" + levelDataList[i].LevelNumber, 1);
+            Debug.Log("level:" + levelDataList[i].LevelNumber + "=" + levelDataList[i].levelStatus);
         }
     }
 
@@ -51,24 +52,25 @@ public class LevelManager : MonoBehaviour
 
     public void SetLevelStatus(int currentLevelNumber, LevelStatus levelStatus)
     {
-        for(int i = 0;i < levelDataList.Count;i++)
+        for (int i = 0; i < levelDataList.Count; i++)
         {
-            if (levelDataList[i].LevelNumber ==currentLevelNumber)
+            if (levelDataList[i].LevelNumber == currentLevelNumber)
             {
                 levelDataList[i].levelStatus = levelStatus;
-                PlayerPrefs.SetInt("Level" + levelDataList[i].LevelNumber,(int)levelStatus);
-                if (levelStatus==LevelStatus.COMPLETED)
+                FBPP.SetInt("Level" + levelDataList[i].LevelNumber, (int)levelStatus);
+                if (levelStatus == LevelStatus.COMPLETED)
                 {
-                    if(i<levelDataList.Count-1)
+                    if (i < levelDataList.Count - 1)
                     {
                         if (levelDataList[i + 1].levelStatus == LevelStatus.LOCKED)
                         {
-                            
+
                             levelDataList[i + 1].levelStatus = LevelStatus.UNLOCKED;
-                            PlayerPrefs.SetInt("Level" + levelDataList[i+1].LevelNumber, 0);
+                            FBPP.SetInt("Level" + levelDataList[i + 1].LevelNumber, 0);
                         }
                     }
                 }
+                FBPP.Save();
                 return;
             }
         }

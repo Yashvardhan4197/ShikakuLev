@@ -9,15 +9,21 @@ public class LevelObject : MonoBehaviour
     public int LevelNumber;
     private void Start()
     {
+        Invoke("SetColor", 0.2f);
+    }
+
+
+    private void SetColor()
+    {
         if (levelStatus == LevelStatus.LOCKED)
         {
             gameObject.GetComponent<Button>().interactable = false;
         }
         else
         {
-            gameObject.GetComponent<Button>().interactable=true;
+            gameObject.GetComponent<Button>().interactable = true;
         }
-        gameObject.GetComponent<Button>().image.color= GameService.Instance.UIService.GetLobbyController().GetLevelButtonColor(levelStatus);
+        gameObject.GetComponent<Button>().image.color = GameService.Instance.UIService.GetLobbyController().GetLevelButtonColor(levelStatus);
 
         gameObject.GetComponent<Button>().onClick.AddListener(OpenLevel);
     }
