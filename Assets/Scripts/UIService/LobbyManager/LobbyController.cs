@@ -46,14 +46,17 @@ public class LobbyController
 
     private void OpenPageNumber()
     {
+        
         for (int i = 0; i < tutorialPopUpData.Length; i++)
         {
             if (i + 1 == currentPageNumber)
             {
+                lobbyView.GetVideoPlayer().Prepare();
                 tutorialPopUpData[i].tutorialPopUpGameObject.SetActive(true);
                 lobbyView.GetVideoPlayer().url = tutorialPopUpData[i].videoClipURL;
                 SetHowToPlayPageNumber(currentPageNumber);
                 lobbyView.GetVideoPlayer().targetTexture = tutorialPopUpData[i].renderTexture;
+                lobbyView.GetVideoPlayer().Play();
             }
             else
             {

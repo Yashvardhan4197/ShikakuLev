@@ -29,7 +29,6 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < levelDataList.Count; i++)
         {
             levelDataList[i].levelStatus = (LevelStatus)FBPP.GetInt("Level" + levelDataList[i].LevelNumber, 1);
-            Debug.Log("level:" + levelDataList[i].LevelNumber + "=" + levelDataList[i].levelStatus);
         }
     }
 
